@@ -18,6 +18,8 @@ export class MainComponent implements OnInit {
               private router: Router) {
     if (this.accountService.userValue) {
       this.router.navigate(['/forecast']);
+    } else {
+      this.router.navigate(['/account/login'])
     }
 
   }
