@@ -1,0 +1,137 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  margin-top: 156px;
+
+  .header {
+    min-height: 28px;
+    -webkit-box-shadow: inset 1px 1px 0 rgb(0 0 0 / 10%), inset 0 -1px 0 rgb(0 0 0 / 7%);
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+    height: 100px;
+    width: 70vw;
+    display: flex;
+    align-items: center;
+    border: 0 solid transparent;
+
+    .widgets-container {
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      .weather-widget {
+        width: 165px;
+        height: 100%;
+        border-left: 1px solid #dadce0;
+        display: flex;
+        justify-content: space-evenly;
+        background-color: #e7f3ff;
+        position: relative;
+          &.location:hover{
+            cursor: pointer;
+          }
+        .current-location{
+          position: absolute;
+          top: 2px;
+          font-size: 10px;
+        }
+        .no-weather{
+          width: 100%;
+          height: 100%;
+          background: url("../../../assets/weather.png") no-repeat center/cover;
+        }
+        .icon-weather{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 20px;
+        }
+
+        .data-widget-info {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          .humidity{
+            font-size: 12px;
+            font-weight: 800;
+          }
+          .temperature{
+            font-size: 30px;
+          }
+        }
+      }
+
+      .user-widget {
+        width: 104px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        .logout{
+          position: absolute;
+          top: 0;
+          width: 20px;
+          right: 0;
+          &:hover{
+            cursor: pointer;
+          }
+        }
+
+        .profileImage {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: #3e1f7e;
+          font-size: 22px;
+          color: #fff;
+          font-weight: bold;
+        }
+      }
+
+      .time-widget {
+        width: 180px;
+        height: 100%;
+        border-right: 1px solid #dadce0;
+        border-left: 1px solid #dadce0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        font-weight: bold;
+      }
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      position: relative;
+
+
+      .search-icon {
+        width: 20px;
+        position: absolute;
+        right: 3%;
+      }
+
+      .autocomplete {
+        border: solid transparent;
+        min-height: 28px;
+        -webkit-box-shadow: inset 1px 1px 0 rgb(0 0 0 / 10%), inset 0 -1px 0 rgb(0 0 0 / 7%);
+        box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+        height: 26px;
+        border-radius: 3px;
+        width: 94%;
+      }
+    }
+  }
+
+}
+

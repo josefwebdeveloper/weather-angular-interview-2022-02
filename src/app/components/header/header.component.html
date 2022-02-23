@@ -1,0 +1,37 @@
+<div class="header-container">
+  <div class="header">
+    <div class="search">
+      <input class="autocomplete" ngx-google-places-autocomplete #placesRef="ngx-places"
+             (onAddressChange)="handleAddressChange($event)"/>
+      <img class="search-icon" src="../../../assets/icons/search-icon.png" alt="search">
+    </div>
+    <div class="widgets-container">
+      <div (click)="showForecast()" [ngClass]="{'location': currentWeather}" class="weather-widget">
+        <span class="current-location">{{currentWeather?.name}}</span>
+
+        <ng-container  *ngIf="currentWeather; else noWeather">
+
+          <div  class="icon-weather">
+            <img src="http://openweathermap.org/img/w/{{currentWeather.weather[0].icon}}.png" alt="weather-icon">
+          </div>
+          <div class="data-widget-info">
+            <div class="temperature">{{currentWeather.main.temp}}°</div>
+            <div class="humidity">
+              {{currentWeather.main.humidity}}%  {{currentWeather.main.pressure}}hpa
+            </div>
+          </div>
+        </ng-container>
+          <ng-template #noWeather>
+            <div class="no-weather"></div>
+          </ng-template>
+      </div>
+      <div class="time-widget">
+        <div>{{ time | date: 'EE, d MMM, h:mm a' }}</div>
+      </div>
+      <div class="user-widget">
+        <img *ngIf="user" (click)="logout()" class="logout" src="../../../assets/icons/logout.png" alt="logout">
+        <div class="profileImage">{{user?.initials ? user.initials : 'NA'}}</div>
+      </div>
+    </div>
+  </div>
+</div>

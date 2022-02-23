@@ -1,0 +1,29 @@
+<div class="forecast-main">
+  <div class="forecast-container">
+    <div *ngIf="forecast" class="forecast-card">
+      <div class="header">
+        <div class="cell add-border">Min/Max</div>
+        <div class="cell add-border">Press</div>
+        <div class="cell add-border">Hum</div>
+      </div>
+      <div *ngFor="let dayForecast of forecast.daily; index as i" class="row-container">
+        <div [ngClass]="{'today-row': i===0}" class=" week-day">{{ dayForecast.dt * 1000 | date :'EEE' }}</div>
+        |
+        <div [ngClass]="{'today-row': i===0}" class=" cell day-month">{{dayForecast.dt * 1000 | date :'d MMM'  }}</div>
+        <div class="cell weather-icon">
+          <img src="http://openweathermap.org/img/w/{{dayForecast.weather[0].icon}}.png" alt="weather-icon">
+        </div>
+        <div [ngClass]="{'add-border': i<forecast.daily.length-1,'today-row': i===0}"
+             class="cell  min-max">{{dayForecast.temp.min | number: '1.0-0'}}
+          °-{{dayForecast.temp.max | number: '1.0-0'}}°
+        </div>
+        <div [ngClass]="{'add-border': i<forecast.daily.length-1, 'today-row': i===0}"
+             class="cell pressure">{{dayForecast.pressure}}hpa
+        </div>
+        <div [ngClass]="{'add-border': i<forecast.daily.length-1, 'today-row': i===0}"
+             class="cell humidity">{{dayForecast.humidity}}%
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
