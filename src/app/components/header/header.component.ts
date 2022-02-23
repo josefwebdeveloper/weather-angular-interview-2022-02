@@ -46,14 +46,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   showForecast(): void {
     if(!this.currentWeather) return
-    console.log('show')
     this.dataService.setShowWidget({show: true})
   }
 
   getCurrentWeather(location): void {
     this.apiService.getCurrentWeather(location).pipe(takeUntil(this.unsubscribe$)).subscribe(data => {
       if (data) {
-        console.log(data)
         this.currentWeather = data
         this.dataService.setLocationData(data.coord)
       }
@@ -74,12 +72,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   handleAddressChange(address: any) {
     if (address) {
-      console.log(address)
       const location = {
         lat: address.geometry.location.lat(),
         lon: address.geometry.location.lng()
       }
-      console.log(location)
       this.getCurrentWeather(location)
     }
   }

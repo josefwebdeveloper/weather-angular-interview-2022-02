@@ -22,7 +22,6 @@ export class ForecastComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.dataService.locationData$.pipe(takeUntil(this.unsubscribe$)).subscribe(data => {
       if (data) {
-        console.log(data)
         this.currentLocation = data
         if (this.showWidget.show){
           this.getForecastWeather(this.currentLocation)
@@ -30,9 +29,7 @@ export class ForecastComponent implements OnInit, OnDestroy {
       }
     })
     this.dataService.showWidget$.pipe(takeUntil(this.unsubscribe$)).subscribe(data => {
-      console.log(data)
       if (data && data.show) {
-        console.log(data)
         this.getForecastWeather(this.currentLocation)
       }
       this.showWidget = data
@@ -42,7 +39,6 @@ export class ForecastComponent implements OnInit, OnDestroy {
   getForecastWeather(location) {
     this.apiService.getForecast(location).pipe(takeUntil(this.unsubscribe$)).subscribe(data => {
       if (data) {
-        console.log(data)
         this.forecast = data;
 
       }
